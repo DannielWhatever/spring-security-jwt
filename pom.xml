@@ -6,18 +6,36 @@
 
     <groupId>cl.foxblue.commons</groupId>
     <artifactId>spring-security-jwt</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>spring-security-jwt</name>
+    <description>Utils for JWT Token with Spring Security</description>
 
     <developers>
         <developer>
             <name>Daniel Gutiérrez</name>
             <email>dannielgutierrez90@gmail.com</email>
             <organization>foxblue</organization>
+            <organizationUrl>http://www.foxblue.cl</organizationUrl>
         </developer>
     </developers>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:dannielwhatever/gspring-security-jwt.git</connection>
+        <developerConnection>scm:git:git@github.com:dannielwhatever/spring-security-jwt.git</developerConnection>
+        <url>https://github.com/dannielwhatever/spring-security-jwt.git</url>
+    </scm>
+
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <jjwt.version>0.6.0</jjwt.version>
@@ -62,6 +80,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -71,6 +90,52 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 
