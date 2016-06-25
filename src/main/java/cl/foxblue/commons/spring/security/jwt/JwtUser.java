@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  *
+ * Basic implementation of JWT user data
  *
  * @author daniel.gutierrez
  */
@@ -16,7 +17,7 @@ public class JwtUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private final String username;
-    private final String rol;
+    private final String roles; //roles could be a comma separated list
 
 
 

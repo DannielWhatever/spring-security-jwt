@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
+ *
+ * Don't forget to provide the jwt secret.
+ *
  * @author daniel.gutierrez
  */
 @Service
@@ -20,11 +23,10 @@ public class JwtService {
     @Value("${jwt.secret}") private String secret;
 
     /**
-     * Tries to parse specified String as a JWT token. If successful, returns User object with username, id and role prefilled (extracted from token).
-     * If unsuccessful (token is invalid or not containing all required user properties), simply returns null.
+     * Tries to get JwtUser from received token.
      *
-     * @param token the JWT token to parse
-     * @return the User object extracted from specified token or null if a token is invalid.
+     * @param token
+     * @return jwtUser
      */
     public JwtUser parseToken(String token) {
         try {
@@ -42,24 +44,16 @@ public class JwtService {
         }
     }
 
-
-    public boolean validateToken(String token, UserDetails userDetails){
-        JwtUser jwtUser = parseToken(token);
-
-        return jwtUser.getUsername().equals(userDetails.getUsername());
-    }
-
     /**
-     * Generates a JWT token containing username as subject, and userId and role as additional claims. These properties are taken from the specified
-     * User object. Tokens validity is infinite.
+     * Generate the token from a JwtUser object.
      *
-     * @param user the user for which the token will be generated
+     * @param jwtUser
      * @return the JWT token
      */
-    public String generateToken(JwtUser user) {
-        Claims claims = Jwts.claims().setSubject(user.getUsername());
-        claims.put(USERNAME, user.getUsername());
-        claims.put(ROL, user.getRol());
+    public String generateToken(JwtUser jwtUser) {
+        Claims claims = Jwts.claims().setSubject(jwtUser.getUsername());
+        claims.put(USERNAME, jwtUser.getUsername());
+        claims.put(ROL, jwtUser.getRoles());
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -67,6 +61,22 @@ public class JwtService {
                 //expiration
                 .compact();
     }
+
+
+    /**
+     * Valid that the token belong to the user.
+     *
+     * @param token
+     * @param userDetails
+     * @return boolean
+     */
+    public boolean validateToken(String token, UserDetails userDetails){
+        return parseToken(token)
+                .getUsername()
+                .equals(userDetails.getUsername());
+    }
+
+
 
 
 

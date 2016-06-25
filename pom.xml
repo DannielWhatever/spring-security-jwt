@@ -70,6 +70,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+            <scope>provided</scope>
+        </dependency>
+
+
         <!-- lombok / dnt forget to add the jar -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -77,6 +85,7 @@
             <version>1.16.8</version>
             <scope>provided</scope>
         </dependency>
+
 
         <!-- Test dependencies -->
 
