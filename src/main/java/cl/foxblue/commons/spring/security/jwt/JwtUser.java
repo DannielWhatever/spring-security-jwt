@@ -1,10 +1,16 @@
 package cl.foxblue.commons.spring.security.jwt;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
+ *
+ *
  * @author daniel.gutierrez
  */
+@Data @AllArgsConstructor
 public class JwtUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -12,18 +18,6 @@ public class JwtUser implements Serializable {
     private final String username;
     private final String rol;
 
-    public JwtUser(String username, String rol) {
-        this.username = username;
-        this.rol = rol;
-    }
 
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getRol() {
-        return rol;
-    }
 
 }

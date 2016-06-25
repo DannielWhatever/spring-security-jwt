@@ -16,8 +16,8 @@
         <developer>
             <name>Daniel Gutiérrez</name>
             <email>dannielgutierrez90@gmail.com</email>
-            <organization>foxblue</organization>
-            <organizationUrl>http://www.foxblue.cl</organizationUrl>
+            <organization>f0xblue</organization>
+            <organizationUrl>https://github.com/f0xblue</organizationUrl>
         </developer>
     </developers>
 
@@ -29,9 +29,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:dannielwhatever/gspring-security-jwt.git</connection>
-        <developerConnection>scm:git:git@github.com:dannielwhatever/spring-security-jwt.git</developerConnection>
-        <url>https://github.com/dannielwhatever/spring-security-jwt.git</url>
+        <connection>scm:git:git@github.com:f0xblue/spring-security-jwt.git</connection>
+        <developerConnection>scm:git:git@github.com:f0xblue/spring-security-jwt.git</developerConnection>
+        <url>https://github.com/f0xblue/spring-security-jwt.git</url>
     </scm>
 
     <properties>
@@ -62,12 +62,23 @@
             <version>${spring-security.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- lombok / dnt forget to add the jar -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.8</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test dependencies -->
 
         <dependency>
             <groupId>junit</groupId>
